@@ -27,7 +27,7 @@ set :shared_children, [app_path + "/logs", web_path + "/upload", web_path + "/ca
 
 set :writable_dirs, [app_path + "/logs", app_path + "/cache"]
 set :webserver_user,    "www-data"
-set :permission_method, :acl
+set :permission_method, :chown
 set :use_set_permissions, true
 
 # Be more verbose by uncommenting the following line
@@ -36,7 +36,6 @@ set :use_set_permissions, true
 # Hooks
 before "deploy:restart", "deploy:set_permissions"
 after  "symfony:assetic:dump", "symfony:doctrine:schema:update" # Update doctrine schema
-after  "symfony:assetic:dump", "symfony:update_admin_acl"
 
 namespace :symfony do
   desc "Runs the test suite"
@@ -54,12 +53,6 @@ namespace :symfony do
   task :import_locale, :roles => :app, :except => { :no_release => true } do
     capifony_pretty_print "--> Importing translation files"
     run "#{try_sudo} sh -c 'cd #{latest_release} && #{php_bin} #{symfony_console} locale:editor:import --env=#{symfony_env_prod}'"
-    capifony_puts_ok
-  end
-  desc "Update admin acl"
-  task :update_admin_acl, :roles => :app, :except => { :no_release => true } do
-    capifony_pretty_print "--> Updating admin ACL"
-    run "#{try_sudo} sh -c 'cd #{latest_release} && #{php_bin} #{symfony_console} sonata:admin:setup-acl --env=#{symfony_env_prod}'"
     capifony_puts_ok
   end
   task :update_acl, :roles => :app do
