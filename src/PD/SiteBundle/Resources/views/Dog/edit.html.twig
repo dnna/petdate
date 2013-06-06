@@ -7,8 +7,9 @@
     </div>
     <div class="row">
         <div class="span6">
-            {% set photo = form.vars.data.photoWebPath != null ? form.vars.data.photoWebPath : 'http://placehold.it/500x285' %}
-            <img src="{{image(photo).zoomCrop(500, 285).png()}}" alt="profile pic" />
+            {% if form.vars.data.photoWebPath != null %}
+                <img src="{{image(form.vars.data.photoWebPath).zoomCrop(500, 285).png()}}" alt="profile pic" />
+            {% endif %}
             <h5>Φωτογραφία Σκύλου</h5>
             <p style="font-size: 12px;">Μια καθαρή φωτογραφία αυξάνει τις πιθανότητες να επικοινωνήσουν οι άλλοι χρήστες μαζί σου</p>
             <p>{{ form_widget(form.photo) }}</p>

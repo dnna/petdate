@@ -33,6 +33,7 @@ set :writable_dirs, [app_path + "/logs", app_path + "/cache"]
 # Hooks
 before "deploy:restart", "deploy:set_permissions"
 after  "symfony:assetic:dump", "symfony:doctrine:schema:update" # Update doctrine schema
+after  "symfony:assetic:dump", "symfony:update_symlink"
 
 namespace :symfony do
   desc "Runs the test suite"
@@ -52,7 +53,8 @@ namespace :symfony do
     run "#{try_sudo} sh -c 'cd #{latest_release} && #{php_bin} #{symfony_console} locale:editor:import --env=#{symfony_env_prod}'"
     capifony_puts_ok
   end
-  task :update_acl, :roles => :app do
+  task :update_symlink, :roles => :app do
+    run "#{try_sudo} sh -c 'cd #{latest_release} && #{php_bin} #{symfony_console} mopa:bootstrap:symlink:less --env=#{symfony_env_prod}'"
   end
   task :apc, :roles => :app do
   end
