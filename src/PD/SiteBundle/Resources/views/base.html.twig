@@ -24,7 +24,7 @@
                         <li class="active"><a href="{{path('fos_user_registration_register')}}">Εγγραφή</a></li>
                     {% else %}
                         <li><p class="navbar-text">Είσαι συνδεδεμένος ως:</p></li>
-                        <li class="dropdown">
+                        <li class="dropdown active">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{app.user.username}} <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="{{path('dog_edit')}}">Ο σκύλος μου</a></li>
