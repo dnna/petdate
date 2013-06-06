@@ -1,0 +1,17 @@
+{% extends 'PDSiteBundle::base.html.twig' %}
+
+{% block content %}
+<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+    <div class="row">
+        <h3>Ο λογαριασμός μου</h3>
+    </div>
+    <div class="row">
+        <div class="span12">
+            {{ form_rest(form) }}
+            <div>
+                <input type="submit" class="btn btn-primary" value="Υποβολή" />
+            </div>
+        </div>
+    </div>
+</form>
+{% endblock %}

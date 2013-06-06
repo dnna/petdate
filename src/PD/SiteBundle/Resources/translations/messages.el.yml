@@ -1,0 +1,33 @@
+Logout: Αποσύνδεση
+Created By: Δημιουργήθηκε απο
+Created At: Ημ/νία Καταχώρισης
+Updated By: Ανανεώθηκε απο
+
+
+Fos user registration form: Εγγραφή στο Pet Date
+Fos user profile form: ''
+
+Name: Όνομα
+Breed: Ράτσα
+Gender: Φύλο
+Area: Περιοχή
+Color: Χρώμα
+Birthyear: Έτος γέννησης
+Description: Περιγραφή
+Vaccinations: Εμβόλια
+Diseases: Ιστορικό Ασθενειών
+
+breed:
+  select: Επιλογή
+gender:
+  select: Επιλογή
+  male: Αρσενικό
+  female: Θηλυκό
+color:
+  select: Επιλογή
+area:
+  select: Επιλογή
+
+dog_edit:
+  flash:
+    success: Το προφίλ του σκύλου ανανεώθηκε με επιτυχία!
