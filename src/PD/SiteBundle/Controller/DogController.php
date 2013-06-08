@@ -1,6 +1,7 @@
 <?php
 namespace PD\SiteBundle\Controller;
 
+use PD\SiteBundle\Entity\Dog;
 use PD\SiteBundle\Form\Type\DogType;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -32,5 +33,14 @@ class DogController extends Controller {
         }
         return $this->container->get('templating')->renderResponse('PDSiteBundle:Dog:edit.html.twig', array('form' => $form->createView())
         );
+    }
+
+    /**
+     * @Route("/dog/{dog}", name="dog")
+     */
+    public function showAction(Dog $dog) {
+        return $this->container->get('templating')->renderResponse('PDSiteBundle:Dog:show.html.twig', array(
+            'dog' => $dog,
+        ));
     }
 }
