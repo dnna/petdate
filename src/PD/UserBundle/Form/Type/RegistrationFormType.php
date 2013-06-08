@@ -21,9 +21,9 @@ class RegistrationFormType extends BaseType
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
-            ->add('address', 'text', array('required' => false))
-            ->add('latitude', 'hidden', array('required' => false,))
-            ->add('longitude', 'hidden', array('required' => false,))
+            ->add('address', 'text', array('required' => true))
+            ->add('latitude', 'hidden', array('required' => true,))
+            ->add('longitude', 'hidden', array('required' => true,))
         ;
     }
 
