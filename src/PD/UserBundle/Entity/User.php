@@ -2,6 +2,7 @@
 namespace PD\UserBundle\Entity;
 
 use PD\SiteBundle\Entity\Dog;
+use PD\UserBundle\Wantlet\ORM\Point;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;

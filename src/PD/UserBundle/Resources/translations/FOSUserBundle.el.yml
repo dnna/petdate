@@ -78,7 +78,9 @@ registration:
             
             Η ομάδα της ΕΔΤΓΠΣΔ.
 
-
+profile:
+  flash:
+    updated: Ο λογαριασμός ανανεώθηκε με επιτυχία!
 
 # Password change
 change_password:
