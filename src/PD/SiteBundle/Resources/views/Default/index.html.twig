@@ -12,15 +12,10 @@
                     <fieldset>
                         <legend>Βρες το ταίρι του</legend>
                             <div class="controls text-center">
-                                <select style="width: 25%">
-                                    <option>Περιοχή</option>
-                                </select>
-                                <select style="width: 25%">
-                                    <option>Ράτσα</option>
-                                </select>
-                                <select style="width: 25%">
-                                    <option>Φύλο</option>
-                                </select>
+                                {{form_widget(form.address, {'attr': {"style": "width: 25%"}})}}
+                                {{form_widget(form.breed, {'attr': {"style": "width: 25%"}})}}
+                                {{form_widget(form.gender, {'attr': {"style": "width: 25%"}})}}
+                                {{form_rest(form)}}
                                 <input type="submit" style="width: 19%" class="btn btn-primary" value="Βρές το!" />
                             </div>
                     </fieldset>

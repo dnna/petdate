@@ -45,3 +45,13 @@
 {% block title %}Pet Date{% endblock %}
 
 {% block footer %}{% endblock %}
+
+{% block foot_script %}
+    {{parent()}}
+    <script>
+        var googleMapsReady = [];
+    </script>
+    <script src="{{asset('js/common.js')}}"></script>
+    <script src="{{asset('js/jquery.placesAutocomplete.js')}}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&language={{app.request.locale}}&callback=googleMapsReadyFunc"></script>
+{% endblock %}

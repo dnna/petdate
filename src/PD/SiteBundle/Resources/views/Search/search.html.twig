@@ -9,15 +9,10 @@
             <form action="#" method="post" class="well form-inline">
             <fieldset>
                     <div class="controls text-center">
-                        <select style="width: 25%">
-                            <option>Περιοχή</option>
-                        </select>
-                        <select style="width: 25%">
-                            <option>Ράτσα</option>
-                        </select>
-                        <select style="width: 25%">
-                            <option>Φύλο</option>
-                        </select>
+                        {{form_widget(form.address)}}
+                        {{form_widget(form.breed)}}
+                        {{form_widget(form.gender)}}
+                        {{form_rest(form)}}
                         <input type="submit" style="width: 19%" class="btn btn-primary" value="Βρες το ταίρι του!" />
                     </div>
             </fieldset>

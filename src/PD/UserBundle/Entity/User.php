@@ -35,6 +35,14 @@ class User extends BaseUser
      * @ORM\OneToOne(targetEntity="PD\SiteBundle\Entity\Dog", mappedBy="user")
      */
     protected $dog;
+    /**
+     * @ORM\Column(name="address", type="string", nullable=true)
+     */
+    protected $address;
+    /**
+     * @ORM\Column(name="point", type="point", nullable=true)
+     */
+    protected $point;
 
     public function getId() {
         return $this->id;
@@ -64,5 +72,57 @@ class User extends BaseUser
 
     public function setDog($dog) {
         $this->dog = $dog;
+    }
+
+    public function getAddress() {
+        return $this->address;
+    }
+
+    public function setAddress($address) {
+        $this->address = $address;
+    }
+
+    public function getPoint() {
+        return $this->point;
+    }
+
+    public function setPoint($point) {
+        $this->point = $point;
+    }
+
+    public function setLatitude($latitude)
+    {
+        if(!isset($this->point)) {
+            $this->point = new Point();
+        }
+        $this->point->setLatitude((float)$latitude);
+        $this->lastpointupdate = new \DateTime('now');
+    }
+
+    public function getLatitude()
+    {
+        if(!isset($this->point) || $this->point->getLatitude() == null) {
+            return 0;
+        } else {
+            return $this->point->getLatitude();
+        }
+    }
+
+    public function setLongitude($longitude)
+    {
+        if(!isset($this->point)) {
+            $this->point = new Point();
+        }
+        $this->point->setLongitude((float)$longitude);
+        $this->lastpointupdate = new \DateTime('now');
+    }
+
+    public function getLongitude()
+    {
+        if(!isset($this->point) || $this->point->getLongitude() == null) {
+            return 0;
+        } else {
+            return $this->point->getLongitude();
+        }
     }
 }

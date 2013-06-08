@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="PD\SiteBundle\Entity\Repositories\DogRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Dog {

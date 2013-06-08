@@ -103,6 +103,9 @@ fos_user:
     profile:
         form:
             type: pd_user_profile
+    registration:
+        form:
+            type: pd_user_registration
 
 services:
     cache:
@@ -112,6 +115,11 @@ services:
        arguments: [%fos_user.model.user.class%]
        tags:
            - { name: form.type, alias: pd_user_profile }
+    pd_user.registration.form.type:
+        class: PD\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: pd_user_registration }
 
 fos_rest:
     view:
