@@ -12,10 +12,9 @@ class DogType extends AbstractType
         $builder
             ->add('photo', 'file', array('required' => false))
             ->add('name', 'text', array('required' => true))
-            ->add('breed', null, array('required' => false, 'empty_value' => 'breed.select'))
+            ->add('breed', null, array('required' => true,))
             ->add('gender', 'choice', array('required' => true, 'choices' => array(0 => 'gender.male', 1 => 'gender.female')))
-            ->add('area', 'choice', array('required' => true, 'choices' => array('area.select')))
-            ->add('color', null, array('required' => false, 'empty_value' => 'color.select'))
+            ->add('color', null, array('required' => true))
             ->add('birthyear', 'date', array('required' => true))
             ->add('description', 'textarea', array('required' => true))
             ->add('vaccinations', 'textarea', array('required' => true))

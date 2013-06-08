@@ -43,10 +43,6 @@ class Dog {
      */
     protected $gender;
     /**
-     * @ORM\Column(type="string")
-     */
-    protected $area;
-    /**
      * @ORM\ManyToOne(targetEntity="Color")
      * @ORM\JoinColumn(name="color_id", referencedColumnName="id")
      */
@@ -116,12 +112,12 @@ class Dog {
         $this->gender = $gender;
     }
 
-    public function getArea() {
-        return $this->area;
-    }
-
-    public function setArea($area) {
-        $this->area = $area;
+    public function getGenderAsString() {
+        if($this->gender == false) {
+            return 'Αρσενικό';
+        } else {
+            return 'Θηλυκό';
+        }
     }
 
     public function getColor() {
