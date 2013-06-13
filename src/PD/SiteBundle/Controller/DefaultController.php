@@ -14,10 +14,12 @@ class DefaultController extends Controller {
      * @Template
      */
     public function indexAction() {
+        $dogs = $this->container->get('doctrine')->getEntityManager()->getRepository('PD\SiteBundle\Entity\Dog')->findAll();
         $criteria = new SearchCriteria();
         $form = $this->createForm(new SearchCriteriaType(), $criteria);
         return $this->render('PDSiteBundle:Default:index.html.twig', array(
             'form' => $form->createView(),
+            'dogs' => $dogs,
         ));
     }
 

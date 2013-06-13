@@ -10,10 +10,15 @@ use Doctrine\ORM\Mapping\OrderBy;
 use FOS\UserBundle\Model\User as BaseUser;
 use Symfony\Component\Validator\Constraints as Assert;
 
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\Accessor;
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="Users")
  * @ORM\Entity(repositoryClass="PD\UserBundle\Entity\Repositories\UserRepository")
+ * @ExclusionPolicy("all")
  */
 class User extends BaseUser
 {
@@ -42,6 +47,7 @@ class User extends BaseUser
     protected $address;
     /**
      * @ORM\Column(name="point", type="point", nullable=true)
+     * @Expose
      */
     protected $point;
 

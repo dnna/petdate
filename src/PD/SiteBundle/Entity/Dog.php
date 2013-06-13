@@ -5,9 +5,19 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Gedmo\Mapping\Annotation as Gedmo;
 
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation\AccessType;
+use JMS\Serializer\Annotation\Accessor;
+use JMS\Serializer\Annotation\ReadOnly;
+use JMS\Serializer\Annotation\Type;
+use JMS\Serializer\Annotation\SerializedName;
+
 /**
  * @ORM\Entity(repositoryClass="PD\SiteBundle\Entity\Repositories\DogRepository")
  * @ORM\HasLifecycleCallbacks
+ * @ExclusionPolicy("all")
+ * @AccessType("public_method")
  */
 class Dog {
     /**
@@ -19,10 +29,12 @@ class Dog {
      /**
      * @ORM\OneToOne(targetEntity="PD\UserBundle\Entity\User", inversedBy="dog")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="CASCADE")
+     * @Expose
      */
     protected $user;
     /**
      * @ORM\Column(type="string")
+     * @Expose
      */
     protected $name;
     /**
@@ -94,6 +106,14 @@ class Dog {
 
     public function setPhoto($photo) {
         $this->photo = $photo;
+    }
+
+    public function getPhotoPath() {
+        return $this->photoPath;
+    }
+
+    public function setPhotoPath($photoPath) {
+        $this->photoPath = $photoPath;
     }
 
     public function getBreed() {
