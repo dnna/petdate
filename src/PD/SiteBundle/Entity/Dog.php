@@ -47,7 +47,7 @@ class Dog {
     protected $photo;
     /**
      * @ORM\ManyToOne(targetEntity="Breed")
-     * @ORM\JoinColumn(name="color_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="breed_id", referencedColumnName="id")
      */
     protected $breed;
     /**
