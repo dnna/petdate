@@ -32,6 +32,14 @@ dog_edit:
   flash:
     success: Το προφίλ του σκύλου ανανεώθηκε με επιτυχία!
 
+dog:
+  description:
+    placeholder: πχ. Μπορώ να τον αφήσω μέχρι 10ήμερο
+  vaccinations:
+    placeholder: πχ. Έχει κάνει όλα τα απαραίτητα εμβόλια
+  diseases:
+    placeholder: πχ. Δεν είχε ποτέ σοβαρές ασθένειες
+
 Address: Διεύθυνση
 
 Contact: Φόρμα Επικοινωνίας
