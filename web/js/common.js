@@ -23,9 +23,11 @@ googleMapsReady.push(function() {
             $('#fos_user_registration_form_longitude').val(place.geometry.location.lng());
         }
     });
-    $('#map_canvas').searchMap({
-        source: dogs
-    });
+    if(typeof dogs != 'undefined') {
+        $('#map_canvas').searchMap({
+            source: dogs
+        });
+    }
 });
 
 function makeMapBounds(swlat, swlng, nelat, nelng) {
