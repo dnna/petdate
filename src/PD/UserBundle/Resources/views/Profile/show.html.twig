@@ -1,8 +1,9 @@
 {% extends 'PDSiteBundle::base.html.twig' %}
 
 {% block content %}
-    <div class="row">
-        <h3>Προφίλ Χρήστη</h3>
-    </div>
-    TODO
+<p><a href="{{path('dog', {'dog': user.dog.id})}}">Προβολή προφίλ σκύλου</a></p>
+<p><a href="{{path('home')}}">Επιστροφή στην αρχική</a></p>
+{#<script>
+    window.location = "{{path('dog', {'dog': user.dog.id})}}";
+</script>#}
 {% endblock %}

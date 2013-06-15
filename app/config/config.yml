@@ -116,6 +116,16 @@ fos_user:
 services:
     cache:
         class: Doctrine\Common\Cache\ApcCache
+    pd.twig.extension:
+        class: PD\SiteBundle\Extension\TwigExtension
+        tags:
+            -  { name: twig.extension }
+    pd.twig.timeago_extension:
+        class: PD\SiteBundle\Extension\TimeAgoExtension
+        arguments:
+            - "@translator"
+        tags:
+        -  { name: twig.extension }
     pd.user.listener:
         class: PD\UserBundle\Extension\UserListener
         tags:

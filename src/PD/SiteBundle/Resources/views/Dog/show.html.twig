@@ -36,10 +36,20 @@
     <div class="row-fluid">
         <h4>Κριτικές</h4>
         <div class="span9" style="margin-left: 0">
+            {% for review in dog.aboutMeReviews %}
             <div class="well">
-                <div style="border-bottom: 1px dotted #CCC; padding-bottom: 5px;">Αγγελική Φ <div class="pull-right">πριν 5 μέρες</div></div>
-                <p style="margin-top: 10px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div style="border-bottom: 1px dotted #CCC; padding-bottom: 5px;">{{review.reviewer.username}} <div class="pull-right">{{review.date|time_ago_in_words}}</div></div>
+                <p style="margin-top: 10px;">{{review.message}}</p>
             </div>
+            {% endfor %}
+            {% if is_granted('ROLE_USER') %}
+            <form action="{{ path('dog_review', {'dog': dog.id}) }}" {{ form_enctype(review_form) }} method="POST" class="dog_review" style="margin-bottom: 60px;">
+                {{form_row(review_form.message, {'attr': {'style': 'width: 98.5%;'}})}}
+                <input type="submit" class="btn btn-primary pull-right" value="Υποβολή" />
+            </form>
+            {% else %}
+                <p class="pull-right">Για να αφήσεις και εσύ μια κριτική συνδέσου <a href="{{path('fos_user_security_login', {'redirect': (app.request.requestUri|url_encode)})}}">εδώ</a>.</p>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

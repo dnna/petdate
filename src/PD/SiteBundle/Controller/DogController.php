@@ -3,8 +3,10 @@ namespace PD\SiteBundle\Controller;
 
 use PD\SiteBundle\Entity\Contact;
 use PD\SiteBundle\Entity\Dog;
+use PD\SiteBundle\Entity\Review;
 use PD\SiteBundle\Form\Type\DogType;
 use PD\SiteBundle\Form\Type\ContactType;
+use PD\SiteBundle\Form\Type\ReviewType;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -41,9 +43,36 @@ class DogController extends Controller {
      * @Route("/dog/{dog}", name="dog")
      */
     public function showAction(Dog $dog) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        $review = new Review();
+        $review->setReviewer($user);
+        $review->setReviewee($dog);
+        $form = $this->createForm(new ReviewType(), $review);
         return $this->container->get('templating')->renderResponse('PDSiteBundle:Dog:show.html.twig', array(
             'dog' => $dog,
+            'review_form' => $form->createView(),
         ));
+    }
+
+    /**
+     * @Route("/dog/{dog}/review", name="dog_review")
+     */
+    public function reviewAction(Dog $dog) {
+        $user = $this->get('security.context')->getToken()->getUser();
+        $review = new Review();
+        $review->setReviewer($user);
+        $review->setReviewee($dog);
+        $form = $this->createForm(new ReviewType(), $review);
+        $request = $this->getRequest();
+        $form->bindRequest($request);
+        if ($this->getRequest()->getMethod() == 'POST') {
+            if($form->isValid()) {
+                $this->get('doctrine')->getEntityManager()->persist($review);
+                $this->get('doctrine')->getEntityManager()->flush();
+                $this->container->get('session')->getFlashBag()->add('success', 'review.flash.success');
+            }
+        }
+        return new RedirectResponse($this->get('router')->generate('dog', array('dog' => $dog->getId())));
     }
 
     /**

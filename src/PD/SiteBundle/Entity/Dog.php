@@ -75,6 +75,11 @@ class Dog {
      * @ORM\Column(type="text")
      */
     protected $diseases;
+    /**
+     * @ORM\OneToMany(targetEntity="PD\SiteBundle\Entity\Review", mappedBy="reviewee")
+     * @ORM\OrderBy({"date" = "DESC"})
+     */
+    protected $aboutMeReviews;
 
     public function getId() {
         return $this->id;
@@ -178,6 +183,14 @@ class Dog {
 
     public function setDiseases($diseases) {
         $this->diseases = $diseases;
+    }
+
+    public function getAboutMeReviews() {
+        return $this->aboutMeReviews;
+    }
+
+    public function setAboutMeReviews($aboutMeReviews) {
+        $this->aboutMeReviews = $aboutMeReviews;
     }
 
     // Photo functions

@@ -47,3 +47,20 @@ contact:
     placeholder: πχ. θέλω να φέρνω τον σκύλο μου κάθε απόγευμα για 5 ημέρες
   flash:
     success: Το μήνυμα στάλθηκε στον ιδιοκτήτη. Αν ενδιαφέρεται θα σου απαντήσει μέσω email.
+
+review:
+  message:
+    label: Άφησε την κριτική σου
+    placeholder: πχ. Ο ιδιοκτήτης ήταν ευγενικός και ευχάριστος και ο σκύλος πολύ καθαρός.
+  flash:
+    success: Η κριτική σου καταχωρήθηκε με επιτυχία!
+
+'half a minute ago': 'μισό λεπτό πριν'
+'less than a minute ago': 'λιγότερο από ένα λεπτό πριν'
+'1 minute ago': '1 λεπτό πριν'
+'%minutes minutes ago': '%minutes λεπτά πριν'
+'about 1 hour ago': 'πριν περίπου 1 ώρα'
+'about %hours hours ago': 'περίπου %hours ώρες πριν'
+'1 day ago': '1 ημέρα πριν'
+'%days days ago': '%days ημέρες πριν'
+'less than %seconds seconds ago': 'λιγότερο από %seconds δευτερόλεπτα πριν'
