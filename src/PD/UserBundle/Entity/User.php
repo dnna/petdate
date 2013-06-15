@@ -50,6 +50,10 @@ class User extends BaseUser
      * @Expose
      */
     protected $point;
+    /**
+     * @ORM\Column(name="lastpointupdate", type="datetime")
+     */
+    protected $lastpointupdate;
 
     public function getId() {
         return $this->id;
