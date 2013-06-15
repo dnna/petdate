@@ -116,6 +116,13 @@ fos_user:
 services:
     cache:
         class: Doctrine\Common\Cache\ApcCache
+    pd.user.listener:
+        class: PD\UserBundle\Extension\UserListener
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+        arguments:
+            - "@service_container"
     pd_user.profile.form.type:
        class: PD\UserBundle\Form\Type\ProfileFormType
        arguments: [%fos_user.model.user.class%]
