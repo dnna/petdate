@@ -30,7 +30,7 @@
             <p style="font-size: 12px;">{{dog.diseases}}</p>
             <h5>Περιγραφή</h5>
             <p style="font-size: 12px;">{{dog.description}}</p>
-            <p class="text-center"><a href="#" class="btn btn-large btn-primary" style="margin-top: 11px;">Επικοινώνησε</a></p>
+            <p class="text-center"><a href="{{path('dog_contact', {'dog': dog.id})}}" class="btn btn-large btn-primary" style="margin-top: 11px;">Επικοινώνησε</a></p>
         </div>
     </div>
     <div class="row-fluid">

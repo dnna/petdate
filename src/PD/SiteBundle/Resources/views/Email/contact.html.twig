@@ -1,0 +1,20 @@
+{% set sender = contact.senderDog.user %}
+<html>
+    <body>
+        <p>Ο χρήστης {{sender.email}} εκδήλωσε ενδιαφέρον για τον σκύλο σου.</p>
+        <table>
+            <tr>
+                <td>{{'contact.location.label'|trans}}</td><td>{{('contact.location.'~contact.location)|trans}}</td>
+            </tr>
+            <tr>
+                <td>{{'contact.puppies.label'|trans}}</td><td>{{contact.puppies}}</td>
+            </tr>
+            <tr>
+                <td>{{'contact.message.label'|trans}}</td><td>{{contact.message}}</td>
+            </tr>
+        </tr>
+    </table>
+    <p>Μπορείς να δεις το προφίλ του σκύλου του <a href="{{url('dog', {'dog': contact.senderDog.id})}}">εδώ</a>.</p>
+    <p>Αν ενδιαφέρεσαι μπορείς να του απαντήσεις σε αυτό το email.</p>
+</body>
+</html>

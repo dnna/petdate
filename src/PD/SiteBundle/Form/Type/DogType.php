@@ -32,6 +32,6 @@ class DogType extends AbstractType
 
     public function getName()
     {
-        return 'address';
+        return 'dog';
     }
 }
