@@ -9,8 +9,8 @@
             <p><strong>{{dog.name}}</strong>, {{dog.breed.name}}, {{dog.genderAsString}}</p>
             <p>{{dog.user.address}}</p>
         </div>
-        <div class="span3 well" style="padding: 14px; min-height: 100px;">
-            <div class="fb-like-box" data-href="https://www.facebook.com/FacebookDevelopers" data-width="128" data-height="60" data-show-faces="true" data-stream="false" data-show-border="true" data-header="true"></div>
+        <div class="span3 well text-center" style="padding: 14px; min-height: 100px; padding-top: 40px;">
+            <div class="fb-like" data-href="{{url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge(app.request.query.all()))}}" data-send="true" data-layout="button_count" data-width="450" data-show-faces="true"></div>
         </div>
     </div>
     <div class="row-fluid">
