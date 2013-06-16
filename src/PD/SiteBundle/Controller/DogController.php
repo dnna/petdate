@@ -29,7 +29,7 @@ class DogController extends Controller {
                 $em = $this->container->get('doctrine')->getEntityManager();
                 $em->persist($dog);
                 $em->flush();
-                $this->container->get('session')->getFlashBag()->add('success', 'dog_edit.flash.success');
+                $this->container->get('session')->getFlashBag()->add('success', $this->get('translator')->trans('dog_edit.flash.success', array('%link%' => $this->get('router')->generate('dog', array('dog' => $dog->getId())))));
                 return new RedirectResponse($this->get('router')->generate('dog_edit'));
             } else {
                 throw new \Exception('Dog Edit Error');

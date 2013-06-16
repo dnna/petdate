@@ -1,5 +1,7 @@
 {% extends 'MopaBootstrapBundle::base.html.twig' %}
 
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
 {% block head_bottom %}
 {{parent()}}
 <style>
@@ -19,6 +21,16 @@
     {% block fbmeta_image %}<meta property="og:image" content="http://petdate.dnna.gr/images/logo.jpg" />{% endblock %}
 {% endblock fbmeta %}
 {% endblock %}
+
+{% block flashes %}
+{% if app.session.flashbag.peekAll|length > 0 %}
+<div class="row-fluid">
+    <div class="span12">
+    {{ session_flash(true, true) }}
+    </div>
+</div>
+{% endif %}
+{% endblock flashes %}
 
 {% block navbar %}
 <div id="fb-root"></div>

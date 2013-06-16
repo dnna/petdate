@@ -22,18 +22,18 @@ class DogRepository extends BaseRepository
         $qb->select('d');
         $qb->from($this->_entityName, 'd');
 
-        if ($criteria->getPoint() != null) {
+        if ($criteria->getPoint() !== null) {
             $qb->join('d.user', 'du');
             $qb->andWhere('DISTANCE(du.point, POINT_STR(:umaxpoint) ) <= :umaxdistance');
             $qb->setParameter('umaxpoint', $criteria->getPoint());
             $qb->setParameter('umaxdistance', '100');
         }
-        if($criteria->getBreed() != null) {
+        if($criteria->getBreed() !== null) {
             $qb->join('d.breed', 'br');
             $qb->andWhere('br.id = :breed');
             $qb->setParameter('breed', $criteria->getBreed()->getId());
         }
-        if($criteria->getGender() != null) {
+        if($criteria->getGender() !== null) {
             $qb->andWhere('d.gender = :gender');
             $qb->setParameter('gender', $criteria->getGender());
         }

@@ -12,9 +12,9 @@ class SearchCriteriaType extends AbstractType
         $builder
             ->add('breed', 'entity', array('class' => 'PD\SiteBundle\Entity\Breed', 'required' => false, 'empty_value' => 'breed.select'))
             ->add('gender', 'choice', array('required' => true, 'choices' => array(0 => 'gender.male', 1 => 'gender.female')))
-            ->add('address', 'text', array('required' => true))
-            ->add('latitude', 'hidden', array('required' => true,))
-            ->add('longitude', 'hidden', array('required' => true,))
+            ->add('address', 'text', array('required' => false))
+            ->add('latitude', 'hidden', array('required' => false,))
+            ->add('longitude', 'hidden', array('required' => false,))
         ;
     }
 
