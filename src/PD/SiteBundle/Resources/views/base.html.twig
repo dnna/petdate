@@ -1,14 +1,23 @@
 {% extends 'MopaBootstrapBundle::base.html.twig' %}
 
 {% block head_bottom %}
-    <meta property="fb:app_id" content="346593462135851" />
-    {% block fbmeta %}
-        <meta property="og:title" content="Pet Date" />
-        <meta property="og:type" content="website" />
-        <meta property="og:description" content="Έχεις σκύλο; Μπες και εσύ στην κοινότητα και διάλεξε το κατάλληλο ταίρι για εκείνο!" />
-        <meta property="og:url" content="{{url('home')}}" />
-        {% block fbmeta_image %}<meta property="og:image" content="https://petdate.dnna.gr/images/logo.jpg" />{% endblock %}
-    {% endblock fbmeta %}
+{{parent()}}
+<style>
+      body {
+        padding-top: 110px; /* 60px to make the container go all the way to the bottom of the topbar */
+        padding-left: 10%;
+        padding-right: 10%;
+      }
+      .navbar .container-fluid { padding-top: 10px; height: 50px; }
+</style>
+<meta property="fb:app_id" content="346593462135851" />
+{% block fbmeta %}
+    <meta property="og:title" content="Pet Date" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="Έχεις σκύλο; Μπες και εσύ στην κοινότητα και διάλεξε το κατάλληλο ταίρι για εκείνο!" />
+    <meta property="og:url" content="{{url('home')}}" />
+    {% block fbmeta_image %}<meta property="og:image" content="https://petdate.dnna.gr/images/logo.jpg" />{% endblock %}
+{% endblock fbmeta %}
 {% endblock %}
 
 {% block navbar %}
