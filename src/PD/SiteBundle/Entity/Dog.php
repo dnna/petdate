@@ -64,7 +64,7 @@ class Dog {
      */
     protected $birthyear;
     /**
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $description;
     /**
