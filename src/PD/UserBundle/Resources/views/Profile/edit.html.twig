@@ -1,5 +1,7 @@
 {% extends 'PDSiteBundle::base.html.twig' %}
 
+{% block title %}Ο λογαριασμός μου | Pet Date{% endblock %}
+
 {% block content %}
 <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
     <div class="row">

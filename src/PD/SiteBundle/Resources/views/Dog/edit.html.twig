@@ -1,5 +1,7 @@
 {% extends 'PDSiteBundle::base.html.twig' %}
 
+{% block title %}Διαχείριση Προφίλ Σκύλου | Pet Date{% endblock %}
+
 {% block content %}
 <form action="{{ path('dog_edit') }}" {{ form_enctype(form) }} method="POST" class="dog_edit">
     <div class="row">
