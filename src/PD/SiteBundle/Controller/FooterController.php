@@ -8,36 +8,34 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 class FooterController extends Controller {
     /**
-     * @Route("/", name="home")
+     * @Route("/how_it_works", name="how_it_works")
      * @Template
      */
-    public function indexAction() {
-        $dogs = $this->container->get('doctrine')->getEntityManager()->getRepository('PD\SiteBundle\Entity\Dog')->findAll();
-        $criteria = new SearchCriteria();
-        $form = $this->createForm(new SearchCriteriaType(), $criteria);
-        return $this->render('PDSiteBundle:Default:index.html.twig', array(
-            'form' => $form->createView(),
-            'dogs' => $dogs,
-        ));
+    public function howItWorksAction() {
+        return $this->render('PDSiteBundle:Footer:how_it_works.html.twig', array());
     }
 
     /**
-     * @Route("/s", name="search")
+     * @Route("/faq", name="faq")
      * @Template
      */
-    public function searchAction() {
-        $criteria = new SearchCriteria();
-        $form = $this->createForm(new SearchCriteriaType(), $criteria);
-        $request = $this->getRequest();
-        $form->bindRequest($request);
-        if($form->isValid()) {
-            $em = $this->container->get('doctrine')->getEntityManager();
-            $dogs = $em->getRepository('PD\SiteBundle\Entity\Dog')->findDogs($form->getData());
-            return $this->render('PDSiteBundle:Search:search.html.twig', array(
-                'dogs' => $dogs,
-                'form' => $form->createView(),
-            ));
-        }
-        throw new \Exception('Invalid search');
+    public function faqAction() {
+        return $this->render('PDSiteBundle:Footer:faq.html.twig', array());
+    }
+
+    /**
+     * @Route("/terms", name="terms")
+     * @Template
+     */
+    public function termsAction() {
+        return $this->render('PDSiteBundle:Footer:terms.html.twig', array());
+    }
+
+    /**
+     * @Route("/contact", name="contact")
+     * @Template
+     */
+    public function contactAction() {
+        return $this->render('PDSiteBundle:Footer:contact.html.twig', array());
     }
 }
