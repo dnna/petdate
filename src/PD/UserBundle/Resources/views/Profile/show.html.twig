@@ -1,6 +1,6 @@
 {% extends 'PDSiteBundle::base.html.twig' %}
 
-{% block title %}Προφίλ Χρήστη | Pet Date{% endblock %}
+{% block title %}{{user.username}} | Pet Date{% endblock %}
 
 {% block content %}
 <p><a href="{{path('dog', {'dog': user.dog.id})}}">Προβολή προφίλ σκύλου</a></p>

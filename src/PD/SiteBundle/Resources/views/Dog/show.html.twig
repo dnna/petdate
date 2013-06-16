@@ -1,6 +1,6 @@
 {% extends 'PDSiteBundle::base.html.twig' %}
 
-{% block title %}Προφίλ Σκύλου | Pet Date{% endblock %}
+{% block title %}{{dog.name|trim}} | Pet Date{% endblock %}
 
 {% block fbmeta %}
   <meta property="og:title" content="{{dog.name|trim}}" />
