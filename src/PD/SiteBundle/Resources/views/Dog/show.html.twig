@@ -1,5 +1,15 @@
 {% extends 'PDSiteBundle::base.html.twig' %}
 
+{% block fbmeta %}
+  <meta property="og:title" content="{{dog.name}}" />
+  <meta property="og:type" content="petdate:dog" />
+  <meta property="og:description" content="{{dog.breed.name}}, {{dog.genderAsString}}, {{dog.user.address}}" />
+  <meta property="og:image" content="{{ app.request.schemeAndHttpHost }}{{asset(dog.photoWebPath)}}" />
+  <meta property="og:url" content="{{url(app.request.attributes.get('_route'), app.request.attributes.get('_route_params'))}}" />
+  <meta property="place:location:latitude"  content="{{dog.user.point.latitude}}">
+  <meta property="place:location:longitude" content="{{dog.user.point.longitude}}">
+{% endblock %}
+
 {% block content %}
     <div class="row">
         <h3>Προφίλ Σκύλου</h3>
