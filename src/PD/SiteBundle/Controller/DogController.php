@@ -89,14 +89,14 @@ class DogController extends Controller {
         $form->bindRequest($request);
         if ($this->getRequest()->getMethod() == 'POST') {
             if($form->isValid()) {
-                /*$message = \Swift_Message::newInstance()
+                $message = \Swift_Message::newInstance()
                         ->setContentType('text/html')
                         ->setSubject('Ο σκύλος σου έχει έναν νέο θαυμαστή')
                         ->setFrom('notification@petdate.dnna.gr', 'Pet Date')
                         ->setReplyTo($contact->getSenderDog()->getUser()->getEmail())
                         ->setTo($contact->getReceiverDog()->getUser()->getEmail())
                         ->setBody($this->container->get('twig')->render('PDSiteBundle:Email:contact.html.twig', array('contact' => $contact)));
-                $this->container->get('mailer')->send($message);*/
+                $this->container->get('mailer')->send($message);
                 $this->container->get('session')->getFlashBag()->add('success', 'contact.flash.success');
                 return new RedirectResponse($this->get('router')->generate('dog', array('dog' => $dog->getId())));
             }
