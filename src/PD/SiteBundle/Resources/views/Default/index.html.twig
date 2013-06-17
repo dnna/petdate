@@ -10,7 +10,13 @@
                 <div class="row-fluid">
                     <form action="{{path('search')}}" method="get" class="well form-inline" style="height: 130px;">
                     <fieldset>
-                        <legend>Βρες το ταίρι του</legend>
+                        <legend>
+                            {% if app.request.get('_route') == 'variation' %}
+                                Αναζήτηση
+                            {% else %}
+                                Βρες το ταίρι του
+                            {% endif %}
+                        </legend>
                             <div class="controls text-center">
                                 {{form_widget(form.address, {'attr': {"style": "width: 25%"}})}}
                                 {{form_widget(form.breed, {'attr': {"style": "width: 25%"}})}}

@@ -24,6 +24,14 @@ class DefaultController extends Controller {
     }
 
     /**
+     * @Route("/variation", name="variation")
+     * @Template
+     */
+    public function variationAction() {
+        return $this->indexAction();
+    }
+
+    /**
      * @Route("/s", name="search")
      * @Template
      */
